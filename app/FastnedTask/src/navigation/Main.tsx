@@ -3,8 +3,9 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import Vehicles from '../screens/Vehicles/Vehicles';
 import VehicleDetails from '../screens/VehicleDetails/VehicleDetails';
 import Charging from '../screens/Charging/Charging';
+import {RootStackParamList} from '../types/Navigation';
 
-const Stack = createNativeStackNavigator();
+const Stack = createNativeStackNavigator<RootStackParamList>();
 
 const screenOptions = {
   headerShown: false,

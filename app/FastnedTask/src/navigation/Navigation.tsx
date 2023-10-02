@@ -1,5 +1,4 @@
-import {View, Text} from 'react-native';
-import React, {PropsWithChildren} from 'react';
+import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import Main from './Main';
 
