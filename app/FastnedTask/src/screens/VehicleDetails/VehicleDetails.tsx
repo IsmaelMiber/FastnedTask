@@ -2,7 +2,6 @@ import {
   View,
   Text,
   TouchableOpacity,
-  Image,
   ScrollView,
   RefreshControl,
 } from 'react-native';
@@ -11,6 +10,7 @@ import Screen from '../Screen/Screen';
 import styles from './VehicleDetails.styles';
 import TextWithLabel from './components/TextWithLabel/TextWithLabel';
 import useVehicleDetails from './hooks/useVehicleDetails';
+import ImageWithLoader from './components/ImageWithLoader/ImageWithLoader';
 
 function VehicleDetails() {
   const {
@@ -44,7 +44,7 @@ function VehicleDetails() {
         <Text style={styles.brand}>{brand}</Text>
         <Text style={styles.model}>{model}</Text>
 
-        <Image
+        <ImageWithLoader
           source={{uri: imageUrl}}
           style={styles.vehicleImg}
           resizeMode="contain"
