@@ -50,10 +50,11 @@ export default function Screen({
     if (isError && error) {
       return (
         <View style={styles.center}>
-          <Text>{error.message}</Text>;
+          <Text>{error.message}</Text>
         </View>
       );
     }
+
     return children;
   }
 
