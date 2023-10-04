@@ -4,9 +4,7 @@ const styles = StyleSheet.create({
   center: {
     justifyContent: 'center',
     alignItems: 'center',
-  },
-  hidden: {
-    display: 'none',
+    position: 'absolute',
   },
 });
 

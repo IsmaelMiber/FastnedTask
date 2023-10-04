@@ -1,17 +1,17 @@
-import React, {useState} from 'react';
+import React, {useCallback, useState} from 'react';
 import {View, ActivityIndicator, Image, ImageProps} from 'react-native';
 import styles from './ImageWithLoader.styles';
-export default function ImageWithLoader(props: ImageProps) {
+function ImageWithLoader(props: ImageProps) {
   const [isLoading, setIsLoading] = useState(false);
 
-  function toggleIsLoading() {
+  const toggleIsLoading = useCallback(() => {
     setIsLoading(loading => !loading);
-  }
+  }, [setIsLoading]);
+
   return (
     <View>
       <Image
         {...props}
-        style={[props.style, isLoading ? styles.hidden : null]}
         onLoadStart={toggleIsLoading}
         onLoadEnd={toggleIsLoading}
       />
@@ -23,3 +23,5 @@ export default function ImageWithLoader(props: ImageProps) {
     </View>
   );
 }
+
+export default React.memo(ImageWithLoader);
