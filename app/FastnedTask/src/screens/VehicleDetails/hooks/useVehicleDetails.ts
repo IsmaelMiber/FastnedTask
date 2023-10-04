@@ -24,15 +24,19 @@ export default function useVehicleDetails() {
   const {helpUrl} = data || {};
 
   const onStartChargingBtnPress = useCallback(() => {
-    navigation.navigate('Charging', {
-      vehicle: data,
+    requestAnimationFrame(() => {
+      navigation.navigate('Charging', {
+        vehicle: data,
+      });
     });
   }, [navigation, data]);
 
   const openLinkOnPress = useCallback(() => {
     if (helpUrl) {
-      Linking.canOpenURL(helpUrl).then(() => {
-        Linking.openURL(helpUrl);
+      requestAnimationFrame(() => {
+        Linking.canOpenURL(helpUrl).then(() => {
+          Linking.openURL(helpUrl);
+        });
       });
     }
   }, [helpUrl]);

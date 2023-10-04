@@ -1,4 +1,4 @@
-import React, {PropsWithChildren} from 'react';
+import React, {PropsWithChildren, useCallback} from 'react';
 import {
   View,
   Text,
@@ -19,8 +19,14 @@ type Props = {
 function BackBtn({withBackBtn}: Partial<Props>) {
   const navigation = useNavigation();
 
+  const goBack = useCallback(() => {
+    requestAnimationFrame(() => {
+      navigation.goBack();
+    });
+  }, [navigation]);
+
   return withBackBtn ? (
-    <TouchableOpacity style={styles.backBtn} onPress={navigation.goBack}>
+    <TouchableOpacity style={styles.backBtn} onPress={goBack}>
       <Image
         source={require('../../assets/icons/left-arrow.png')}
         style={styles.backBtnIcon}
