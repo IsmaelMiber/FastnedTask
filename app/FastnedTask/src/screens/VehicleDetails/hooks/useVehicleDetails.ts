@@ -1,21 +1,14 @@
 import {useQuery} from '@tanstack/react-query';
 import {getVehicleDetails} from '../../../API/API';
-import {
-  NavigationProp,
-  RouteProp,
-  useNavigation,
-  useRoute,
-} from '@react-navigation/native';
+import {NavigationProp, useNavigation} from '@react-navigation/native';
 import {RootStackParamList} from '../../../types/Navigation';
 import {useCallback} from 'react';
 import {Alert, Linking} from 'react-native';
 import {TVehicle} from '../../../types/Vehicle';
 
-export default function useVehicleDetails() {
+export default function useVehicleDetails(id: TVehicle['id']) {
   const navigation =
-    useNavigation<NavigationProp<RootStackParamList, 'VehicleDetails'>>();
-  const {params} = useRoute<RouteProp<RootStackParamList, 'VehicleDetails'>>();
-  const {id} = params;
+    useNavigation<NavigationProp<RootStackParamList, 'Charging'>>();
 
   const {data, isLoading, isError, error, refetch, isRefetching} = useQuery<
     TVehicle,

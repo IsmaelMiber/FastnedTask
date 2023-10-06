@@ -11,8 +11,14 @@ import styles from './VehicleDetails.styles';
 import TextWithLabel from './components/TextWithLabel/TextWithLabel';
 import useVehicleDetails from './hooks/useVehicleDetails';
 import ImageWithLoader from './components/ImageWithLoader/ImageWithLoader';
+import {NativeStackScreenProps} from '@react-navigation/native-stack';
+import {RootStackParamList} from '../../types/Navigation';
 
-function VehicleDetails() {
+type Props = NativeStackScreenProps<RootStackParamList, 'VehicleDetails'>;
+
+function VehicleDetails({route}: Props) {
+  const {params} = route;
+  const {id} = params;
   const {
     data,
     isLoading,
@@ -22,7 +28,7 @@ function VehicleDetails() {
     isRefetching,
     onStartChargingBtnPress,
     openLinkOnPress,
-  } = useVehicleDetails();
+  } = useVehicleDetails(id);
 
   const {
     brand,
