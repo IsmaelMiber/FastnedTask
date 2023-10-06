@@ -8,7 +8,7 @@ import {
 } from '@react-navigation/native';
 import {RootStackParamList} from '../../../types/Navigation';
 import {useCallback} from 'react';
-import {Linking} from 'react-native';
+import {Alert, Linking} from 'react-native';
 import {TVehicle} from '../../../types/Vehicle';
 
 export default function useVehicleDetails() {
@@ -40,8 +40,14 @@ export default function useVehicleDetails() {
   const openLinkOnPress = useCallback(() => {
     if (helpUrl) {
       requestAnimationFrame(() => {
-        Linking.canOpenURL(helpUrl).then(() => {
-          Linking.openURL(helpUrl);
+        Linking.canOpenURL(helpUrl).then((canOpen: boolean) => {
+          if (canOpen) {
+            Linking.openURL(helpUrl).catch((err: Error) => {
+              Alert.alert('Invalid URL', err.message);
+            });
+          } else {
+            Alert.alert('Invalid URL', `Can't open this URL: ${helpUrl}`);
+          }
         });
       });
     }
