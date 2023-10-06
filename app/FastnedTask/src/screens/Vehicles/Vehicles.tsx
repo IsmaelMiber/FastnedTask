@@ -1,10 +1,17 @@
 import React, {useCallback} from 'react';
-import {View, Text, FlatList, ListRenderItemInfo} from 'react-native';
+import {
+  View,
+  Text,
+  FlatList,
+  ListRenderItemInfo,
+  TextInput,
+} from 'react-native';
 import Screen from '../Screen/Screen';
 import styles from './Vehicles.styles';
 import {TVehicle} from '../../types/Vehicle';
 import useVehicles from './hooks/useVehicles';
 import VehicleOverview from './components/VehicleOverview/VehicleOverview';
+import EmptyList from './components/EmptyList/EmptyList';
 
 function Vehicles() {
   const {
@@ -15,6 +22,9 @@ function Vehicles() {
     isRefetching,
     getItemLayout,
     onRefresh,
+    searchedVehicles,
+    searchText,
+    onInputTextChange,
   } = useVehicles();
 
   const renderItem = useCallback(
@@ -30,11 +40,22 @@ function Vehicles() {
       isError={isError}
       error={error}
       withBackBtn={false}>
+      <TextInput
+        value={searchText}
+        onChange={onInputTextChange}
+        style={styles.searchInput}
+        placeholder="Search"
+        autoComplete="off"
+        autoCorrect={false}
+        blurOnSubmit
+        returnKeyType="search"
+        onSubmitEditing={onInputTextChange}
+      />
       <FlatList
         ListHeaderComponent={
           <Text style={styles.headerText}>All Vehicles</Text>
         }
-        data={data}
+        data={searchedVehicles}
         renderItem={renderItem}
         keyExtractor={keyExtractor}
         ItemSeparatorComponent={Separator}
@@ -44,6 +65,7 @@ function Vehicles() {
         removeClippedSubviews
         onRefresh={onRefresh}
         refreshing={isRefetching}
+        ListEmptyComponent={<EmptyList searchText={searchText} />}
       />
     </Screen>
   );

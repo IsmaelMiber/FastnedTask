@@ -8,6 +8,7 @@ const styles = StyleSheet.create({
     marginVertical: 16,
   },
   contentContainer: {
+    flexGrow: 1,
     paddingHorizontal: 16,
   },
   headerText: {
@@ -18,6 +19,16 @@ const styles = StyleSheet.create({
   separator: {
     height: ITEM_SEPARATOR_HEIGHT,
     backgroundColor: '#eee',
+  },
+  searchInput: {
+    borderBottomWidth: ITEM_SEPARATOR_HEIGHT,
+    borderColor: '#eee',
+    marginHorizontal: 16,
+    paddingVertical: 8,
+    marginTop: 16,
+    fontFamily: FONTS.SemiBold,
+    fontSize: 16,
+    color: 'grey',
   },
 });
 
