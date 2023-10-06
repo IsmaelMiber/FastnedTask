@@ -1,0 +1,11 @@
+appId: org.reactjs.native.example.FastnedTask
+---
+- launchApp
+- assertVisible:
+    id: "search-input"
+- tapOn:
+    id: "search-input"
+- inputText: "MacBook"
+- hideKeyboard
+- assertVisible:
+    id: "not-exist"
