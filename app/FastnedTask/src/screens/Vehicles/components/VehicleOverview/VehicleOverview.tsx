@@ -1,23 +1,36 @@
 import {View, Text, TouchableOpacity} from 'react-native';
-import React from 'react';
+import React, {useCallback} from 'react';
 import {TVehicle} from '../../../../types/Vehicle';
-import {useNavigation} from '@react-navigation/native';
+import {NavigationProp, useNavigation} from '@react-navigation/native';
 import styles from './VehicleOverview.styles';
+import {RootStackParamList} from '../../../../types/Navigation';
 
 type Props = {
-  vehicle: Partial<TVehicle>;
+  vehicle: Partial<TVehicle> | undefined;
+  asView?: boolean;
 };
 
-function VehicleOverview({vehicle}: Props) {
-  const navigation = useNavigation();
+function VehicleOverview({vehicle, asView = false}: Props) {
+  const navigation =
+    useNavigation<NavigationProp<RootStackParamList, 'VehicleDetails'>>();
+
+  const onPress = useCallback(() => {
+    if (vehicle?.id) {
+      navigation.navigate('VehicleDetails', {
+        id: vehicle.id,
+      });
+    }
+  }, [navigation, vehicle]);
+
+  if (!vehicle) {
+    return null;
+  }
+
   return (
     <TouchableOpacity
       style={styles.vehicleOverview}
-      onPress={() =>
-        navigation.navigate('VehicleDetails', {
-          id: vehicle.id,
-        })
-      }>
+      onPress={onPress}
+      disabled={asView}>
       <Text style={styles.brand}>{vehicle.brand}</Text>
       <View style={styles.vehicleBottomDetails}>
         <Text style={styles.model}>{vehicle.model}</Text>
