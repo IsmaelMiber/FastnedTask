@@ -15,7 +15,6 @@ import EmptyList from './components/EmptyList/EmptyList';
 
 function Vehicles() {
   const {
-    data,
     isLoading,
     isError,
     error,
