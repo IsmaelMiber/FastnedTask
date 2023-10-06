@@ -1,4 +1,4 @@
-appId: ${app_id}
+appId: com.fastnedtask
 ---
 - runFlow: search-input-with-exist-input.yaml
 - tapOn:

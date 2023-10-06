@@ -1,4 +1,4 @@
-appId: ${app_id}
+appId: com.fastnedtask
 ---
 - launchApp
 - assertVisible:
