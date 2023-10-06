@@ -5,16 +5,17 @@ import {
   ActivityIndicator,
   TouchableOpacity,
   Image,
+  ViewProps,
 } from 'react-native';
 import styles from './Screen.styles';
 import {useNavigation} from '@react-navigation/native';
 
-type Props = {
+interface Props extends ViewProps {
   isLoading?: boolean;
   isError?: boolean;
   error?: Error | null;
   withBackBtn?: boolean;
-};
+}
 
 function BackBtn({withBackBtn}: Partial<Props>) {
   const navigation = useNavigation();
@@ -43,6 +44,7 @@ export default function Screen({
   error = null,
   children,
   withBackBtn = true,
+  ...props
 }: PropsWithChildren<Props>) {
   function renderContent() {
     if (isLoading) {
@@ -65,7 +67,7 @@ export default function Screen({
   }
 
   return (
-    <View style={[styles.container]}>
+    <View style={[styles.container]} {...props}>
       <BackBtn withBackBtn={withBackBtn} />
       {renderContent()}
     </View>

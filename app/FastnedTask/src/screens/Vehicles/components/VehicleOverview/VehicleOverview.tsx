@@ -28,6 +28,7 @@ function VehicleOverview({vehicle, asView = false}: Props) {
 
   return (
     <TouchableOpacity
+      testID={vehicle.brand}
       style={styles.vehicleOverview}
       onPress={onPress}
       disabled={asView}>

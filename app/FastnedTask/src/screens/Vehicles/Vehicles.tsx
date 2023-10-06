@@ -49,6 +49,7 @@ function Vehicles() {
         blurOnSubmit
         returnKeyType="search"
         onSubmitEditing={onInputTextChange}
+        testID="search-input"
       />
       <FlatList
         ListHeaderComponent={

@@ -17,7 +17,7 @@ function Charging({route}: Props) {
   const {chargeSpeedInKw, progress, energyProgress, percentage, stopAnimation} =
     useCharging(vehicle);
   return (
-    <Screen>
+    <Screen testID="Charging">
       <View style={styles.container}>
         <VehicleOverview asView vehicle={vehicle} />
         <View style={styles.chargingBarContainer}>

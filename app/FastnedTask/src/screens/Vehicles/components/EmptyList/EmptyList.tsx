@@ -8,7 +8,7 @@ type Props = {
 
 export default function EmptyList({searchText = ''}: Props) {
   return (
-    <View style={styles.container}>
+    <View testID="not-exist" style={styles.container}>
       <Text style={styles.emptyText}>"{searchText}" Car Not Found</Text>
     </View>
   );

@@ -35,7 +35,11 @@ function VehicleDetails() {
   } = data || {};
 
   return (
-    <Screen isLoading={isLoading} isError={isError} error={error}>
+    <Screen
+      isLoading={isLoading}
+      isError={isError}
+      error={error}
+      testID="VehicleDetails">
       <ScrollView
         contentContainerStyle={styles.contentContainer}
         refreshControl={
@@ -64,6 +68,7 @@ function VehicleDetails() {
               </TouchableOpacity>
             ) : null}
             <TouchableOpacity
+              testID="charging-button"
               style={[styles.btn, styles.startChargingBtn]}
               onPress={onStartChargingBtnPress}>
               <Text style={styles.btnText}>Start Charging</Text>
