@@ -1,5 +1,14 @@
 # Getting Started
 
+#Backend Side
+## Step 1: Installation
+1. You will need to download Docker from [here](https://www.docker.com/products/docker-desktop/).
+
+2. After downloading and installing it, you will find in the project a folder called **backend**, open it and drag the DockerFile to the **Docker Desktop App**
+then click play icon to start **the backend service**.
+
+## Mobile Side
+
 >**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
 
 ## Step 1: Start the Metro Server
