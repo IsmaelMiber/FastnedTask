@@ -9,6 +9,7 @@ import {
 import {RootStackParamList} from '../../../types/Navigation';
 import {useCallback} from 'react';
 import {Linking} from 'react-native';
+import {TVehicle} from '../../../types/Vehicle';
 
 export default function useVehicleDetails() {
   const navigation =
@@ -16,7 +17,12 @@ export default function useVehicleDetails() {
   const {params} = useRoute<RouteProp<RootStackParamList, 'VehicleDetails'>>();
   const {id} = params;
 
-  const {data, isLoading, isError, error, refetch, isRefetching} = useQuery({
+  const {data, isLoading, isError, error, refetch, isRefetching} = useQuery<
+    TVehicle,
+    Error,
+    TVehicle,
+    (string | number)[]
+  >({
     queryKey: ['vehicleDetails', id],
     queryFn: () => getVehicleDetails(id),
   });
