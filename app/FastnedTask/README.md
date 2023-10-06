@@ -1,6 +1,6 @@
 # Getting Started
 
-#Backend Side
+## Backend Side
 ## Step 1: Installation
 1. You will need to download Docker from [here](https://www.docker.com/products/docker-desktop/).
 
