@@ -1,0 +1,12 @@
+appId: org.reactjs.native.example.FastnedTask
+---
+- runFlow: search-input-with-exist-input.yaml
+- tapOn:
+    id: "BMW"
+    index: 0
+- assertVisible:
+    id: "VehicleDetails"
+- tapOn:
+    id: "charging-button"
+- assertVisible:
+    id: "Charging"
