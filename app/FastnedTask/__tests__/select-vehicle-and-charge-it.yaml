@@ -1,4 +1,4 @@
-appId: org.reactjs.native.example.FastnedTask
+appId: com.FastnedTask
 ---
 - runFlow: search-input-with-exist-input.yaml
 - tapOn:
